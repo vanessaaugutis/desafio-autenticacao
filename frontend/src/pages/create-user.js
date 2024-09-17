@@ -6,16 +6,36 @@ const CreateUserPage = () => {
     const [name, setName] = useState('');
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
-    const [error, setError] = useState(false)
+    const [error, setError] = useState('')
     const navigate = useNavigate();
+
+    const emailValidated = (email) => {
+        const padraoEmail = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+        return padraoEmail.test(email);
+    };
+    
+    const senhaValidated = (password) => {
+        const padraoPassword = /^(?=.*[a-zA-Z])(?=.*\d)[A-Za-z\d]{8,}$/;
+        return padraoPassword.test(password);
+    };
 
     const handleSubmit = async (event) => {
         event.preventDefault();
+        if (!emailValidated(email)) {
+            setError('E-mail inválido');
+            return;
+        }
+        if (!senhaValidated(password)) {
+            setError('A senha deve ter pelo menos 8 caracteres e incluir letras e números');
+            return;
+        }
+
         try {
             await createUser({ name, email, password });
+            setError('')
             alert('Usuário criado com sucesso');
         } catch (error) {
-            setError(true)
+            setError('Erro ao criar usuário. Verifique os campos e tente novamente')
         }
     };
 
@@ -33,7 +53,7 @@ const CreateUserPage = () => {
                     <label>Senha</label>
                     <input type="password" placeholder="Senha" value={password} onChange={(e) => setPassword(e.target.value)} />
                 </div>
-                { error && <span className='error'>Erro ao criar usuário. Verifique os campos e tente novamente.</span>}
+                { error && <span className='error'>{error}</span>}
                 <button type="button" onClick={handleSubmit}>Criar</button>
                 <button type="button" onClick={() => navigate('/')}>Voltar</button>
             </div>
