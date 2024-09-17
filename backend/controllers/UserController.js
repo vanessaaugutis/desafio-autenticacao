@@ -19,6 +19,7 @@ const listUser = (req, res) => {
     const user = users.find(u => u.name === search || u.email === search);
 
     if (!user) {
+        console.error('Nenhum usuário encontrado')
         return res.status(404).send('Nenhum usuário encontrado');
     }
 

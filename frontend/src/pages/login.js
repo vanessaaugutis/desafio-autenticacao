@@ -23,6 +23,7 @@ const LoginPage = ({ setToken }) => {
         <div className='container'>
             <div className='container-login'>
                 <h2>LOGIN</h2>
+                <p>Bem-Vindo!</p>
                 <div>
                     <input type="email" placeholder="Email" value={email} onChange={(e) => setEmail(e.target.value)} required />
                     <input type="password" placeholder="Senha" value={password} onChange={(e) => setPassword(e.target.value)} required />

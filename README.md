@@ -29,7 +29,7 @@ cd desafio-autenticacao
 
 Na pasta raiz do projeto rode:
 ```bash
-- docker-compose up --build
+docker-compose up --build
 ```
 
 Após a construção e o início dos contêineres, você pode acessar a aplicação.

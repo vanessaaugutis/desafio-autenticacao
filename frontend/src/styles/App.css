@@ -60,6 +60,14 @@ span.error {
     color: #8e44ad;
     font-weight: 700;
     font-size: 24px;
+    margin-bottom: 5px;
+}
+
+.container-login p {
+    color: #8e44ad;
+    font-weight: 700;
+    font-size: 22px;
+    margin-top: 0px;
 }
 
 .register-data label {
