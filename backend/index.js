@@ -15,7 +15,6 @@ require('dotenv').config();
 const users = []
 
 app.post('/user', async (req, res) => {
-    console.log('entrou')
     const { name, cpf, email, password } = req.body;
     if (!name || !cpf || !email || !password) {
         return res.status(400).send('Nome, CPF, E-mail e senha são campos obrigatórios');
@@ -44,12 +43,21 @@ app.post('/login', async (req, res) => {
 
 app.get('/list-user', authenticationToken, (req, res) => {
     const search = req.query.search;
-    console.log(users)
-    const user = users.find(u => u.email === search || u.name === search || u.cpf === search);
-    console.log(user)
+    let user = null
+    users.forEach((u) => {
+        if (u.name === search || u.email == search || u.cpf === search) {
+            user = {
+                name: u.name,
+                email: u.email,
+                cpf: u.cpf
+            }
+        }
+    })
+
     if (!user) {
         return res.status(401).send('Nenhum usuário encontrado');
     }
+
     res.json(user);
 });
 

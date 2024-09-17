@@ -11,10 +11,8 @@ const api = axios.create({
 export const createUser = async (payload) => {
     try {
         const response = await api.post('/user', payload);
-        console.log(response)
         return response.data;
     } catch (error) {
-        alert('Erro ao criar usuário');
         throw error;
     }
 };
@@ -25,7 +23,6 @@ export const auth = async (payload) => {
         localStorage.setItem('token', response.data.token);
         return response.data.token;
     } catch (error) {
-        alert('Erro ao fazer login');
         throw error;
     }
 };
@@ -39,8 +36,6 @@ export const searchUser = async (param) => {
             return;
         }
 
-        console.log(token)
-
         const response = await api.get(`/list-user?search=${param}`, {
             headers: {
                 'Authorization': `Bearer ${token}`
@@ -49,7 +44,6 @@ export const searchUser = async (param) => {
 
         return response.data;
     } catch (error) {
-        alert('Erro ao buscar usuário');
         throw error;
     }
 };
