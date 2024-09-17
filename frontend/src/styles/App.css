@@ -1,3 +1,7 @@
+body {
+    margin: 0;
+}
+
 div {
     display: flex;
     flex-direction: column;
@@ -8,7 +12,7 @@ div {
 }
 
 input, button {
-    width: 40%;
+    width: 80%;
     border: 1px solid gray;
     border-radius: 8px;
     padding: 10px;
@@ -20,6 +24,12 @@ button {
     cursor: pointer;
     margin-top: 25px;
     font-weight: 700;
+    background-color: #9b59b6;
+    color: #FFFFFF;
+}
+
+button:hover {
+    background-color: #8e44ad;
 }
 
 span {
@@ -30,9 +40,31 @@ span.error {
     color: red;
 }
 
-.container-login {
-    height: 90vh;
+.container {
+    width: 100vw;
+    height: 100vh;
+    margin: 0;
+    padding: 0;
+    background: linear-gradient(135deg, #9b59b6, #3498db, #8e44ad);
+}
+
+.container-login, .container-register, .container-list-search {
+    width: 40%;
+    border-radius: 8px;
     overflow: hidden;
+    background-color: #FFFFFF;;
+    padding: 10px;
+}
+
+.container-login h2 {
+    color: #8e44ad;
+    font-weight: 700;
+    font-size: 24px;
+}
+
+.register-data label {
+    align-self: start;
+    margin-left: 8%;
 }
 
 .container-list {
