@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { auth } from '../services/user';
 
@@ -7,6 +7,13 @@ const LoginPage = ({ setToken }) => {
     const [password, setPassword] = useState('');
     const navigate = useNavigate();
     const [error, setError] = useState(false)
+
+    useEffect(() => {
+        const storedToken = localStorage.getItem('token');
+        if (storedToken) {
+            navigate('/user')
+        }
+    }, [navigate]);
 
     const handleSubmit = async (event) => {
         event.preventDefault();

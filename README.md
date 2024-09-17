@@ -35,7 +35,7 @@ docker-compose up --build
 Após a construção e o início dos contêineres, você pode acessar a aplicação.
 
 Front-end: Acesse http://localhost:3000 no seu navegador.
-Back-end: O back-end estará acessível na URL http://localhost:5000
+Back-end: O back-end estará acessível na URL http://localhost:3333
 
 # Parando a aplicação
 

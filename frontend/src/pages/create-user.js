@@ -32,10 +32,14 @@ const CreateUserPage = () => {
 
         try {
             await createUser({ name, email, password });
-            setError('')
+            navigate('/');
             alert('Usuário criado com sucesso');
         } catch (error) {
-            setError('Erro ao criar usuário. Verifique os campos e tente novamente')
+            if (error?.response?.data === 'E-mail já registrado') {
+                setError('Erro ao criar usuário. Este e-mail já está sendo usado'); 
+            } else {
+                setError('Erro ao criar usuário. Verifique os campos e tente novamente');
+            }
         }
     };
 

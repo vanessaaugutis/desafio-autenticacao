@@ -7,6 +7,13 @@ const registerUser = async (req, res) => {
         return res.status(400).send('Nome, E-mail e senha são campos obrigatórios');
     }
 
+    const users = getUsers()
+    const userUsed = users?.find(u => u.email === email) || null;
+
+    if (userUsed) {
+        return res.status(400).send('E-mail já registrado');
+    }
+
     // Criptografar senha
     const hashPassword = await bcrypt.hash(password, 10);
     addUser({ name, email, password: hashPassword });
@@ -14,19 +21,19 @@ const registerUser = async (req, res) => {
 };
 
 const listUser = (req, res) => {
-    const search = req.query.search;
+    const search = req.query.search?.toLowerCase();
     const users = getUsers();
-    const user = users.find(u => u.name === search || u.email === search);
+    const usersReturn = users?.filter(u => 
+        u.name.toLowerCase().includes(search) || 
+        u.email.toLowerCase().includes(search)
+    );
 
-    if (!user) {
+    if (!usersReturn || usersReturn.length === 0) {
         console.error('Nenhum usuário encontrado')
         return res.status(404).send('Nenhum usuário encontrado');
     }
 
-    res.json({
-        name: user.name,
-        email: user.email
-    });
+    res.json(usersReturn);
 };
 
 module.exports = {

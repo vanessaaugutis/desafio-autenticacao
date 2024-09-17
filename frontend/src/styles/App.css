@@ -80,5 +80,17 @@ span.error {
     padding: 5px;
     border-radius: 8px;
     width: 50%;
-    margin-top: 30px;;
+    margin-top: 30px;
+    align-self: start;
+}
+
+.user-table {
+    width: 100%;
+    padding: 5px;
+    border: 1px solid gray;
+    border-radius: 8px;
+}
+
+.user-table th, .user-table td {
+    text-align: center;
 }
