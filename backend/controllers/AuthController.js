@@ -1,6 +1,7 @@
 const bcrypt = require('bcryptjs');
 const jwt = require('jsonwebtoken');
 const { getUsers } = require('../storage');
+const JWT_SECRET = '004faf95675a1802516044fbafa4990bd9d87b8c7f6bcb56655a295b9e576e273f6c06ca8a2daf84'
 
 const loginUser = async (req, res) => {
     const { email, password } = req.body;
@@ -14,7 +15,7 @@ const loginUser = async (req, res) => {
         return res.status(401).send('Senha incorreta!');
     }
 
-    const token = jwt.sign({ email: user.email }, process.env.JWT_SECRET, { expiresIn: '6h' });
+    const token = jwt.sign({ email: user.email }, JWT_SECRET, { expiresIn: '6h' });
     res.json({ token });
 };
 
