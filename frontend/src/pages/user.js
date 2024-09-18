@@ -41,7 +41,7 @@ const UserPage = () => {
                         Erro ao buscar usuário. Pesquise por um dado existente
                     </span>
                 )}
-                {users.length > 0 && (
+                {users?.length > 0 && (
                     <table className='user-table'>
                         <thead>
                             <tr>
