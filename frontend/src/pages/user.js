@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 import { searchUser } from '../services/user';
 import { useNavigate } from 'react-router-dom';
 
@@ -7,14 +7,6 @@ const UserPage = () => {
     const [users, setUsers] = useState([]);
     const [error, setError] = useState(false);
     const navigate = useNavigate();
-
-    useEffect(() => {
-        const storedToken = localStorage.getItem('token');
-        if (!storedToken) {
-            navigate('/')
-        }
-        // eslint-disable-next-line react-hooks/exhaustive-deps
-    }, []);
 
     const handleSearch = async () => {
         try {
@@ -28,7 +20,7 @@ const UserPage = () => {
 
     const handleLogout = () => {
         localStorage.removeItem('token');
-        navigate('/');
+        navigate('/')
     };
 
     return (
@@ -43,6 +35,7 @@ const UserPage = () => {
                 />
                 <button onClick={handleSearch}>Buscar</button>
                 <button onClick={handleLogout}>Deslogar</button>
+                
                 {error && (
                     <span className='error'>
                         Erro ao buscar usuário. Pesquise por um dado existente
