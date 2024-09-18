@@ -9,12 +9,12 @@ const loginUser = async (req, res) => {
     const users = getUsers();
     const user = users.find(u => u.email === email);
     if (!user) {
-        console.error('Usuário não encontrado');
+        console.error('Usuário não encontrado.');
         return res.status(404).send('Usuário não encontrado.');
     }
 
     if (!(await bcrypt.compare(password, user.password))) {
-        console.error('Senha incorreta')
+        console.error('Senha incorreta.')
         return res.status(401).send('Senha incorreta!');
     }
 

@@ -16,5 +16,5 @@ app.post('/login', loginUser);
 app.get('/list-user', authenticationToken, listUser);
 
 app.listen(3333, () => {
-  console.log(`Server running on port 3333`);
+  console.log('Server running on port 3333');
 });

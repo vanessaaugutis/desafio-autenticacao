@@ -26,7 +26,7 @@ const CreateUserPage = () => {
             return;
         }
         if (!senhaValidated(password)) {
-            setError('A senha deve ter pelo menos 8 caracteres e incluir letras e números');
+            setError('A senha deve ter pelo menos 8 caracteres e incluir letras e números.');
             return;
         }
 
@@ -36,9 +36,9 @@ const CreateUserPage = () => {
             alert('Usuário criado com sucesso');
         } catch (error) {
             if (error?.response?.data === 'E-mail já registrado') {
-                setError('Erro ao criar usuário. Este e-mail já está sendo usado'); 
+                setError('Erro ao criar usuário. Este e-mail já está sendo usado.'); 
             } else {
-                setError('Erro ao criar usuário. Verifique os campos e tente novamente');
+                setError('Erro ao criar usuário. Verifique os campos e tente novamente.');
             }
         }
     };

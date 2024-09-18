@@ -11,7 +11,7 @@ const LoginPage = ({ setToken }) => {
     useEffect(() => {
         const storedToken = localStorage.getItem('token');
         if (storedToken) {
-            navigate('/user')
+            navigate('/user');
         }
     }, [navigate]);
 
@@ -20,9 +20,9 @@ const LoginPage = ({ setToken }) => {
         try {
             const response = await auth({ email, password });
             setToken(response);
-            navigate('/user')
+            navigate('/user');
         } catch (error) {
-            setError(true)
+            setError(true);
         }
     };
 
